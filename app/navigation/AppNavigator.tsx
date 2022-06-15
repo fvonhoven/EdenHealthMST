@@ -6,11 +6,11 @@ import {
   DarkTheme,
 } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { LoginScreen, HomeScreen } from '../screens'
+import { LoginScreen, HomeScreen, DetailsScreen } from '../screens'
 
 export type NavigatorParamList = {
   'Eden Health': undefined
-  Details: undefined
+  Details: { clincian: any }
   Login: undefined
 }
 
@@ -30,6 +30,7 @@ const AppStack = () => {
     // })}
     >
       <Stack.Screen name="Eden Health" component={HomeScreen} />
+      <Stack.Screen name="Details" component={DetailsScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
       {/* {true ? (
         <>

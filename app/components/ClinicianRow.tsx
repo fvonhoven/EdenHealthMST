@@ -34,10 +34,14 @@ export function ClinicianRow({
     return <Avatar.Image source={{ uri: imageUrl }} size={48} />
   }
   return (
-    <Card key={id} elevation={5} testID="clinician-row">
+    <Card
+      key={id}
+      elevation={5}
+      testID="clinician-row"
+      onPress={() => onPress(clinician)}>
       <Card.Title
         title={fullName}
-        subtitle={`${city}, ${state}}`}
+        subtitle={`${city}, ${state}`}
         subtitleNumberOfLines={2}
         left={renderLeft}
         right={renderRight}

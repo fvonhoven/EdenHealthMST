@@ -49,7 +49,7 @@ export function HomeScreen({ navigation }: HomeScreenProps) {
       <ClinicianRow
         key={clinician.id}
         clinician={clinician}
-        onPress={() => console.log('Details')}
+        onPress={() => navigation.navigate('Details', { clinician })}
       />
     )
   }
