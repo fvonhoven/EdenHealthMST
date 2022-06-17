@@ -5,16 +5,28 @@ import { NavigatorParamList } from '../navigation/AppNavigator'
 import { FavoriteClinician } from '../components/FavoriteClinician'
 import { ClinicianRow } from '../components/ClinicianRow'
 import { EmptyData } from '../components/EmptyData'
+import { observer } from 'mobx-react-lite'
 import DATA from '../mockData/CliniciansListMock.json'
+import { useStores } from '../mst/mstContext'
 
 type HomeScreenProps = NativeStackScreenProps<NavigatorParamList, 'Eden Health'>
 // type Props = {
 //   clinician: Clinician
 //   onPress: () => void
 // }
-
-export function HomeScreen({ navigation }: HomeScreenProps) {
-  const listRef = useRef<FlatList>(null)
+export const HomeScreen = observer(function HomeScreen({
+  navigation,
+}: HomeScreenProps) {
+  const { cliniciansStore } = useStores()
+  useEffect(() => {
+    cliniciansStore.setClinicians(DATA)
+  }, [])
+  // async function fetchClinicians() {
+  //   return await clinicianStore.fetchClinicians()
+  // }
+  // useEffect(() => {
+  //   fetchClinicians()
+  // })
   // const { favorite } = useAppSelector(state => state.clinician)
   // const dispatch = useAppDispatch()
   // const clinicians = useAppSelector(state => {
@@ -44,7 +56,7 @@ export function HomeScreen({ navigation }: HomeScreenProps) {
   // function goToDetails(clinician: Clinician) {
   //   navigation.navigate('Details', { clinician })
   // }
-  function renderItem({ item: clinician }: { item: any }) {
+  function renderItem({ item: clinician }: { item: Clinician }) {
     return (
       <ClinicianRow
         key={clinician.id}
@@ -62,20 +74,20 @@ export function HomeScreen({ navigation }: HomeScreenProps) {
     return item.id
   }
   // if (true) return <EmptyData />
+  // console.log({ clinicians: cliniciansStore.clinicians })
   return (
     <View style={styles.root}>
       <FlatList
-        ref={listRef}
-        data={DATA || []}
+        data={cliniciansStore.clinicians}
         keyExtractor={keyExtractor}
         renderItem={renderItem}
         // ListHeaderComponent={renderListHeader}
         stickyHeaderIndices={[0]}
-        initialNumToRender={500}
+        initialNumToRender={15}
       />
     </View>
   )
-}
+})
 
 const styles = StyleSheet.create({
   root: { flex: 1 },
