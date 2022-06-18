@@ -1,7 +1,11 @@
 import React from 'react'
-import { StyleProp } from 'react-native'
-// import { Clinician } from '../modelTypes/Clinician.types'
-import { Avatar, Card, IconButton } from 'react-native-paper'
+import { StyleProp, View } from 'react-native'
+import { Clinician } from '../mst/'
+import { ListItem, Avatar } from '@rneui/themed'
+import { ListItemContent } from '@rneui/base/dist/ListItem/ListItem.Content'
+import { Icon } from '@rneui/base/dist/Icon'
+import { ListItemTitle } from '@rneui/base/dist/ListItem/ListItem.Title'
+import { ListItemSubtitle } from '@rneui/base/dist/ListItem/ListItem.Subtitle'
 
 type ClinicianRowProps = {
   clinician: Clinician
@@ -13,11 +17,13 @@ type ClinicianRowProps = {
 export function ClinicianRow({
   clinician,
   onPress,
+  styleOverride,
   favorite,
 }: ClinicianRowProps) {
   const {
     fullName,
     imageUrl,
+    email,
     id,
     address: { city, state },
   } = clinician
@@ -25,27 +31,27 @@ export function ClinicianRow({
   function handleRowPress() {
     onPress(clinician)
   }
-  function renderRight() {
-    return !favorite ? (
-      <IconButton icon="chevron-right" onPress={handleRowPress} />
-    ) : null
-  }
-  function renderLeft() {
-    return <Avatar.Image source={{ uri: imageUrl }} size={48} />
-  }
   return (
-    <Card
+    <ListItem
       key={id}
-      elevation={5}
-      testID="clinician-row"
-      onPress={() => onPress(clinician)}>
-      <Card.Title
-        title={fullName}
-        subtitle={`${city}, ${state}`}
-        subtitleNumberOfLines={2}
-        left={renderLeft}
-        right={renderRight}
+      bottomDivider
+      onPress={handleRowPress}
+      containerStyle={styleOverride}>
+      <Avatar
+        source={{ uri: imageUrl }}
+        rounded
+        size="medium"
+        renderPlaceholderContent={<Icon name="person" />}
       />
-    </Card>
+      <ListItemContent>
+        <ListItemTitle>{fullName}</ListItemTitle>
+        <ListItemSubtitle numberOfLines={1}>{email}</ListItemSubtitle>
+        <View style={{ flexDirection: 'row' }}>
+          <ListItemSubtitle numberOfLines={1}>{city}, </ListItemSubtitle>
+          <ListItemSubtitle numberOfLines={1}>{state}</ListItemSubtitle>
+        </View>
+      </ListItemContent>
+      {!favorite && <ListItem.Chevron />}
+    </ListItem>
   )
 }

@@ -1,5 +1,9 @@
-import { Instance, types, SnapshotOut } from 'mobx-state-tree'
+import { ApiResponse, create } from 'apisauce'
+import { Instance, types, SnapshotOut, applySnapshot } from 'mobx-state-tree'
 import Mock from '../mockData/CliniciansListMock.json'
+import { sortedClinicians, filteredClinicians } from '../utils/appUtils'
+
+export type Coordinates = string[]
 
 const AddressModel = types.model('Address', {
   number: types.optional(types.string, ''),
@@ -14,7 +18,7 @@ const AddressModel = types.model('Address', {
 })
 
 const ClinicianModel = types.model('Clinician', {
-  id: types.optional(types.string, ''),
+  id: types.optional(types.identifier, ''),
   firstName: types.optional(types.string, ''),
   lastName: types.optional(types.string, ''),
   fullName: types.optional(types.string, ''),
@@ -30,10 +34,49 @@ export const CliniciansListModel = types
   .model('CliniciansListModel')
   .props({
     clinicians: types.optional(types.array(ClinicianModel), []),
+    favorite: types.maybe(types.reference(ClinicianModel)),
+    filtering: false,
+    userLocationState: '',
   })
   .actions(self => ({
-    setClinicians: value => {
-      self.clinicians.replace(value)
+    setFavorite: value => {
+      const sameFav = value.id === self.favorite?.id
+      if (sameFav) {
+        self.favorite = undefined
+      } else {
+        self.favorite = value
+      }
+    },
+    setIsFiltering: value => {
+      self.filtering = value
+    },
+    setUserLocationState: value => {
+      self.userLocationState = value
+    },
+  }))
+  .actions(self => ({
+    fetchUserLocationState: async (location: Coordinates) => {
+      const api = create({ baseURL: 'https://api.geocod.io/v1.7' })
+      const response: ApiResponse<any> = await api.post('/reverse', {
+        api_key: 'a133778d1636866d002aa3a7982a601b6da323a',
+        ...location,
+      })
+      try {
+        const { state } =
+          response.data.results[0].response?.results[0]?.address_components
+        self.setUserLocationState('NY')
+        self.setIsFiltering(true)
+      } catch {
+        return { kind: 'bad-data' }
+      }
+    },
+  }))
+  .views(self => ({
+    get filteredClinicians() {
+      return filteredClinicians(self.clinicians.slice())
+    },
+    get sortedClinicians() {
+      return sortedClinicians(self.clinicians.slice())
     },
   }))
 

@@ -2,51 +2,63 @@ import React from 'react'
 import { View, ScrollView, Text, StyleSheet } from 'react-native'
 import type { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { NavigatorParamList } from '../navigation/AppNavigator'
-import { Avatar, Card, IconButton, Paragraph } from 'react-native-paper'
+import { Avatar, Card, Icon } from '@rneui/base'
+import { CardFeaturedSubtitle } from '@rneui/base/dist/Card/Card.FeaturedSubtitle'
+import { CustomHeader } from '../components/CustomHeader'
+import { useStores } from '../mst'
+import { observer } from 'mobx-react-lite'
 
 type DetailsScreenProps = NativeStackScreenProps<NavigatorParamList, 'Details'>
 
-export function DetailsScreen({ route }: DetailsScreenProps) {
-  // const { favorite } = useAppSelector(state => state.clinician)
+export const DetailsScreen = observer(function DetailsScreen({
+  navigation,
+  route,
+}: DetailsScreenProps) {
   const [starSelected, setStarSelected] = React.useState(false)
-  // const dispatch = useAppDispatch()
   const { clinician } = route.params
   const { fullName, bio, email, imageUrl, phone, location, id } = clinician
+  const {
+    cliniciansStore: { favorite, setFavorite },
+  } = useStores()
 
   function toggleFavorite() {
-    // dispatch(setFavorite(clinician))
+    setFavorite(clinician)
     setStarSelected(!starSelected)
   }
   function getIconName() {
-    // const isFavorite = favorite && favorite.id === id
-    return true ? 'star' : 'star-outline'
+    const isFavorite = favorite && favorite.id === id
+    return isFavorite ? 'star' : 'star-outline'
   }
   return (
     <ScrollView contentContainerStyle={styles.root}>
-      <Card style={styles.card} mode="elevated" elevation={4}>
-        <Card.Title
-          title={fullName}
-          left={() => <Avatar.Image source={{ uri: imageUrl }} size={48} />}
-          right={() => (
-            <IconButton
-              icon={getIconName()}
-              color="black"
-              onPress={toggleFavorite}
-            />
-          )}
-        />
-        {/* <View style={styles.contact}>
+      <CustomHeader
+        title={clinician.fullName}
+        onLeftPress={() => navigation.pop()}
+      />
+      <Card containerStyle={styles.card}>
+        <View style={styles.cardHeader}>
+          <Avatar source={{ uri: imageUrl }} rounded size="large" />
+          <Icon
+            type="ionicons"
+            name={getIconName()}
+            color="black"
+            onPress={toggleFavorite}
+          />
+        </View>
+        <Card.Title>{fullName}</Card.Title>
+        <View style={styles.contact}>
           <Text>{email}</Text>
           <Text>{phone}</Text>
           <Text>{location}</Text>
-        </View> */}
-        <Card.Content style={{ color: 'black' }}>
-          <Paragraph>{bio}</Paragraph>
-        </Card.Content>
+        </View>
+        <Card.Divider />
+        <CardFeaturedSubtitle style={{ color: 'black' }}>
+          {bio}
+        </CardFeaturedSubtitle>
       </Card>
     </ScrollView>
   )
-}
+})
 
 const styles = StyleSheet.create({
   root: { flexGrow: 1 },
@@ -55,7 +67,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     height: 84,
   },
-  card: { borderRadius: 8, margin: 14 },
+  card: { borderRadius: 8 },
   cardHeader: {
     flex: 1,
     flexDirection: 'row',

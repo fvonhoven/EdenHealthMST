@@ -10,7 +10,7 @@ import { LoginScreen, HomeScreen, DetailsScreen } from '../screens'
 
 export type NavigatorParamList = {
   'Eden Health': undefined
-  Details: { clincian: any }
+  Details: { clinician: any }
   Login: undefined
 }
 
@@ -20,14 +20,15 @@ const Stack = createNativeStackNavigator<NavigatorParamList>()
 const AppStack = () => {
   return (
     <Stack.Navigator
-    // screenOptions={({ route, navigation }) => ({
-    //   header: () => (
-    //     <Header
-    //       title={route.params?.clinician.fullName || route.name}
-    //       onBackPress={() => navigation.pop()}
-    //     />
-    //   ),
-    // })}
+      screenOptions={{ headerShown: false }}
+      // screenOptions={({ route, navigation }) => ({
+      //   header: () => (
+      //     <Header
+      //       title={route.params?.clinician.fullName || route.name}
+      //       onBackPress={() => navigation.pop()}
+      //     />
+      //   ),
+      // })}
     >
       <Stack.Screen name="Eden Health" component={HomeScreen} />
       <Stack.Screen name="Details" component={DetailsScreen} />

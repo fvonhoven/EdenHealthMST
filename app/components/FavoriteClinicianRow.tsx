@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyleSheet } from 'react-native'
+import { Clinician } from '../mst'
 import { ClinicianRow } from './ClinicianRow'
 
 type FavoriteClinicianProps = {
@@ -11,8 +12,7 @@ export function FavoriteClinicianRow({
   clinician,
   onPress,
 }: FavoriteClinicianProps) {
-  const emptyClinician = Object.keys(clinician).length === 0
-  if (emptyClinician) return null
+  if (!clinician) return null
   return (
     <ClinicianRow
       styleOverride={styles.row}

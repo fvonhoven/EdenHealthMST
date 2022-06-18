@@ -1,61 +1,108 @@
 import React, { useEffect, useRef } from 'react'
-import { View, StyleSheet, FlatList } from 'react-native'
+import {
+  View,
+  StyleSheet,
+  FlatList,
+  Platform,
+  PermissionsAndroid,
+} from 'react-native'
 import type { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { NavigatorParamList } from '../navigation/AppNavigator'
-import { FavoriteClinician } from '../components/FavoriteClinician'
-import { ClinicianRow } from '../components/ClinicianRow'
+import { FavoriteClinicianRow } from '../components/FavoriteClinicianRow'
+import { ClinicianRow, CustomHeader } from '../components'
 import { EmptyData } from '../components/EmptyData'
+import RNGeolocation from '@react-native-community/geolocation'
 import { observer } from 'mobx-react-lite'
-import DATA from '../mockData/CliniciansListMock.json'
 import { useStores } from '../mst/mstContext'
 
 type HomeScreenProps = NativeStackScreenProps<NavigatorParamList, 'Eden Health'>
-// type Props = {
-//   clinician: Clinician
-//   onPress: () => void
-// }
+
 export const HomeScreen = observer(function HomeScreen({
   navigation,
+  route,
 }: HomeScreenProps) {
   const { cliniciansStore } = useStores()
-  useEffect(() => {
-    cliniciansStore.setClinicians(DATA)
-  }, [])
-  // async function fetchClinicians() {
-  //   return await clinicianStore.fetchClinicians()
-  // }
-  // useEffect(() => {
-  //   fetchClinicians()
-  // })
-  // const { favorite } = useAppSelector(state => state.clinician)
-  // const dispatch = useAppDispatch()
-  // const clinicians = useAppSelector(state => {
-  //   const allClinicians = state.clinician.clinicians
+  const {
+    userLocationState,
+    setIsFiltering,
+    filtering,
+    favorite,
+    fetchUserLocationState,
+    sortedClinicians,
+    filteredClinicians,
+  } = cliniciansStore
 
-  //   const filterState = state.clinician.filterState
-  //   if (filterState === null) {
-  //     return allClinicians
-  //     // .sort(
-  //     //   (a: Clinician, b: Clinician) => (a.firstName > b.firstName ? 1 : -1),
-  //     // )
+  // const handledClinicians: () => Clinician[] = () => {
+  //   if (filtering) {
+  //     const fil = filteredClinicians(clinicians)
+  //     console.log('FIL', fil)
+  //     return fil
   //   } else {
-  //     return allClinicians.filter(
-  //       (clinician: Clinician) => clinician.state === filterState,
-  //     )
+  //     return cliniciansStore.clinicians
   //   }
-  // })
-
-  // useEffect(() => {
-  //   const unsubscribe = navigation.addListener('focus', () => {
-  //     favorite.id &&
-  //       listRef.current?.scrollToIndex({ index: 0, animated: false })
-  //   })
-  //   return unsubscribe
-  // }, [navigation, favorite])
-
-  // function goToDetails(clinician: Clinician) {
-  //   navigation.navigate('Details', { clinician })
   // }
+
+  function getOneTimeLocation() {
+    RNGeolocation.getCurrentPosition(
+      async position => {
+        const { coords } = position
+        if (coords) {
+          const { latitude, longitude } = coords
+          const formattedCoords = [`${latitude}, ${longitude}`]
+          const state = await fetchUserLocationState(formattedCoords)
+          state && setIsFiltering(true)
+        }
+      },
+      error => {
+        console.error(error.message)
+      },
+      {
+        enableHighAccuracy: false,
+        timeout: 30000,
+        maximumAge: 1000,
+      },
+    )
+  }
+
+  async function requestLocationPermission() {
+    if (Platform.OS === 'ios') {
+      getOneTimeLocation()
+    } else {
+      try {
+        const granted = await PermissionsAndroid.request(
+          PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+          {
+            title: 'Location Access Required',
+            message:
+              'Eden health needs to access your location to filter Clinicians in your state.', // TODO: i18n these
+            buttonNeutral: 'Ask Me Later',
+            buttonNegative: 'Cancel',
+            buttonPositive: 'OK',
+          },
+        )
+        if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+          getOneTimeLocation()
+        } else {
+          console.log('Permission Denied')
+        }
+      } catch (err) {
+        console.warn(err)
+      }
+    }
+  }
+
+  function handleUserLocation() {
+    console.log('USER LOCATION STATE', userLocationState)
+    if (userLocationState) {
+      setIsFiltering(!filtering)
+    } else {
+      requestLocationPermission()
+    }
+  }
+
+  function goToDetails(clinician: Clinician) {
+    navigation.navigate('Details', { clinician })
+  }
   function renderItem({ item: clinician }: { item: Clinician }) {
     return (
       <ClinicianRow
@@ -66,9 +113,9 @@ export const HomeScreen = observer(function HomeScreen({
     )
   }
 
-  // function renderListHeader() {
-  //   return <FavoriteClinician clinician={favorite} onPress={goToDetails} />
-  // }
+  function renderListHeader() {
+    return <FavoriteClinicianRow clinician={favorite} onPress={goToDetails} />
+  }
 
   function keyExtractor(item: any) {
     return item.id
@@ -77,11 +124,17 @@ export const HomeScreen = observer(function HomeScreen({
   // console.log({ clinicians: cliniciansStore.clinicians })
   return (
     <View style={styles.root}>
+      <CustomHeader
+        title={route.name}
+        rightIconName={filtering ? 'funnel' : 'funnel-outline'}
+        onRightPress={handleUserLocation}
+        // rightIconName={isFiltering ? 'filter' : 'filter-outline'}
+      />
       <FlatList
-        data={cliniciansStore.clinicians}
+        data={filtering ? filteredClinicians : sortedClinicians}
         keyExtractor={keyExtractor}
         renderItem={renderItem}
-        // ListHeaderComponent={renderListHeader}
+        ListHeaderComponent={renderListHeader}
         stickyHeaderIndices={[0]}
         initialNumToRender={15}
       />
