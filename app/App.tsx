@@ -3,10 +3,6 @@ import { SafeAreaView, StatusBar, useColorScheme } from 'react-native'
 import { AppNavigator } from './navigation'
 import { RootStoreProvider, setupRootStore } from './mst'
 
-interface State {
-  rootStore: Root
-}
-
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark'
   const [rootStore, setRootStore] = useState<any>()

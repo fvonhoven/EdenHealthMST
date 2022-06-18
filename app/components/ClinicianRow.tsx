@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleProp, View } from 'react-native'
+import { StyleProp, View, StyleSheet } from 'react-native'
 import { Clinician } from '../mst/'
 import { ListItem, Avatar } from '@rneui/themed'
 import { ListItemContent } from '@rneui/base/dist/ListItem/ListItem.Content'
@@ -46,7 +46,7 @@ export function ClinicianRow({
       <ListItemContent>
         <ListItemTitle>{fullName}</ListItemTitle>
         <ListItemSubtitle numberOfLines={1}>{email}</ListItemSubtitle>
-        <View style={{ flexDirection: 'row' }}>
+        <View style={styles.addressContainer}>
           <ListItemSubtitle numberOfLines={1}>{city}, </ListItemSubtitle>
           <ListItemSubtitle numberOfLines={1}>{state}</ListItemSubtitle>
         </View>
@@ -55,3 +55,7 @@ export function ClinicianRow({
     </ListItem>
   )
 }
+
+const styles = StyleSheet.create({
+  addressContainer: { flexDirection: 'row' },
+})

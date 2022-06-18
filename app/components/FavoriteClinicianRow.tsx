@@ -4,7 +4,7 @@ import { Clinician } from '../mst'
 import { ClinicianRow } from './ClinicianRow'
 
 type FavoriteClinicianProps = {
-  clinician: Clinician | {}
+  clinician?: Clinician
   onPress: (clinician: Clinician) => void
 }
 
@@ -12,7 +12,9 @@ export function FavoriteClinicianRow({
   clinician,
   onPress,
 }: FavoriteClinicianProps) {
-  if (!clinician) return null
+  if (!clinician) {
+    return null
+  }
   return (
     <ClinicianRow
       styleOverride={styles.row}

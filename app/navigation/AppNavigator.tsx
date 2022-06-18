@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { StyleSheet, useColorScheme } from 'react-native'
+import { useColorScheme } from 'react-native'
 import {
   NavigationContainer,
   DefaultTheme,
@@ -19,35 +19,21 @@ const Stack = createNativeStackNavigator<NavigatorParamList>()
 
 const AppStack = () => {
   return (
-    <Stack.Navigator
-      screenOptions={{ headerShown: false }}
-      // screenOptions={({ route, navigation }) => ({
-      //   header: () => (
-      //     <Header
-      //       title={route.params?.clinician.fullName || route.name}
-      //       onBackPress={() => navigation.pop()}
-      //     />
-      //   ),
-      // })}
-    >
-      <Stack.Screen name="Eden Health" component={HomeScreen} />
-      <Stack.Screen name="Details" component={DetailsScreen} />
-      <Stack.Screen name="Login" component={LoginScreen} />
-      {/* {true ? (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      {true ? (
         <>
+          <Stack.Screen name="Login" component={LoginScreen} />
         </>
       ) : (
         <>
-          {<Stack.Screen
+          <Stack.Screen
             name="Eden Health"
             options={{ headerTitle: 'Eden Health' }}
             component={HomeScreen}
           />
           <Stack.Screen name="Details" component={DetailsScreen} />
-          </>
-          
+        </>
       )}
-      */}
     </Stack.Navigator>
   )
 }

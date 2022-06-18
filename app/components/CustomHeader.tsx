@@ -4,7 +4,7 @@ import { Header as HeaderRNE, Icon } from '@rneui/base'
 
 interface HeaderProps {
   title?: string
-  rightIconName: string
+  rightIconName?: string
   onLeftPress?(): void
   onRightPress?(): void
 }

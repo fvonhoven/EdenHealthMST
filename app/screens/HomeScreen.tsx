@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import {
   View,
   StyleSheet,
@@ -14,6 +14,7 @@ import { EmptyData } from '../components/EmptyData'
 import RNGeolocation from '@react-native-community/geolocation'
 import { observer } from 'mobx-react-lite'
 import { useStores } from '../mst/mstContext'
+import { Clinician } from '../mst'
 
 type HomeScreenProps = NativeStackScreenProps<NavigatorParamList, 'Eden Health'>
 
@@ -31,16 +32,6 @@ export const HomeScreen = observer(function HomeScreen({
     sortedClinicians,
     filteredClinicians,
   } = cliniciansStore
-
-  // const handledClinicians: () => Clinician[] = () => {
-  //   if (filtering) {
-  //     const fil = filteredClinicians(clinicians)
-  //     console.log('FIL', fil)
-  //     return fil
-  //   } else {
-  //     return cliniciansStore.clinicians
-  //   }
-  // }
 
   function getOneTimeLocation() {
     RNGeolocation.getCurrentPosition(
@@ -120,8 +111,9 @@ export const HomeScreen = observer(function HomeScreen({
   function keyExtractor(item: any) {
     return item.id
   }
-  // if (true) return <EmptyData />
-  // console.log({ clinicians: cliniciansStore.clinicians })
+  if (filteredClinicians.length === 0 || sortedClinicians.length === 0) {
+    return <EmptyData />
+  }
   return (
     <View style={styles.root}>
       <CustomHeader

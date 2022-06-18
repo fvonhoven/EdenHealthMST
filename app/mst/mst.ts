@@ -1,6 +1,5 @@
-import { ApiResponse, create } from 'apisauce'
-import { Instance, types, SnapshotOut, applySnapshot } from 'mobx-state-tree'
-import Mock from '../mockData/CliniciansListMock.json'
+// import { ApiResponse, create } from 'apisauce'
+import { Instance, types, SnapshotOut } from 'mobx-state-tree'
 import { sortedClinicians, filteredClinicians } from '../utils/appUtils'
 
 export type Coordinates = string[]
@@ -39,7 +38,7 @@ export const CliniciansListModel = types
     userLocationState: '',
   })
   .actions(self => ({
-    setFavorite: value => {
+    setFavorite: (value: Clinician) => {
       const sameFav = value.id === self.favorite?.id
       if (sameFav) {
         self.favorite = undefined
@@ -47,7 +46,7 @@ export const CliniciansListModel = types
         self.favorite = value
       }
     },
-    setIsFiltering: value => {
+    setIsFiltering: (value: boolean) => {
       self.filtering = value
     },
     setUserLocationState: value => {
@@ -56,14 +55,14 @@ export const CliniciansListModel = types
   }))
   .actions(self => ({
     fetchUserLocationState: async (location: Coordinates) => {
-      const api = create({ baseURL: 'https://api.geocod.io/v1.7' })
-      const response: ApiResponse<any> = await api.post('/reverse', {
-        api_key: 'a133778d1636866d002aa3a7982a601b6da323a',
-        ...location,
-      })
+      // const api = create({ baseURL: 'https://api.geocod.io/v1.7' })
+      // const response: ApiResponse<any> = await api.post('/reverse', {
+      //   api_key: 'a133778d1636866d002aa3a7982a601b6da323a',
+      //   ...location,
+      // })
       try {
-        const { state } =
-          response.data.results[0].response?.results[0]?.address_components
+        // const { state } =
+        //   response.data.results[0].response?.results[0]?.address_components
         self.setUserLocationState('NY')
         self.setIsFiltering(true)
       } catch {
