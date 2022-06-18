@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet } from 'react-native'
 import { Header as HeaderRNE, Icon } from '@rneui/base'
+import { color } from '../theme'
 
 interface HeaderProps {
   title?: string
@@ -14,6 +15,7 @@ export function CustomHeader(props: HeaderProps) {
 
   return (
     <HeaderRNE
+      backgroundColor={color.primary}
       leftComponent={
         title === 'Eden Health'
           ? {}
@@ -45,12 +47,11 @@ export function CustomHeader(props: HeaderProps) {
     />
   )
 }
-
+// TODO: metrics
 const styles = StyleSheet.create({
   headerContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#397af8',
     width: '100%',
     paddingVertical: 15,
     height: 60,

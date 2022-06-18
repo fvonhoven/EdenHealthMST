@@ -7,6 +7,7 @@ import {
 } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { LoginScreen, HomeScreen, DetailsScreen } from '../screens'
+import { useStores } from '../mst'
 
 export type NavigatorParamList = {
   'Eden Health': undefined
@@ -18,9 +19,12 @@ export type NavigatorParamList = {
 const Stack = createNativeStackNavigator<NavigatorParamList>()
 
 const AppStack = () => {
+  const {
+    cliniciansStore: { isLoggedIn },
+  } = useStores()
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      {true ? (
+      {isLoggedIn ? (
         <>
           <Stack.Screen name="Login" component={LoginScreen} />
         </>

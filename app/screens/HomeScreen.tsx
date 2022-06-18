@@ -11,10 +11,11 @@ import { NavigatorParamList } from '../navigation/AppNavigator'
 import { FavoriteClinicianRow } from '../components/FavoriteClinicianRow'
 import { ClinicianRow, CustomHeader } from '../components'
 import { EmptyData } from '../components/EmptyData'
-import RNGeolocation from '@react-native-community/geolocation'
+import { requestLocationPermission } from '../utils/geolocation/geolocation'
 import { observer } from 'mobx-react-lite'
 import { useStores } from '../mst/mstContext'
-import { Clinician } from '../mst'
+import { Clinician, Coordinates } from '../mst'
+import { fonts } from '../theme/fonts'
 
 type HomeScreenProps = NativeStackScreenProps<NavigatorParamList, 'Eden Health'>
 
@@ -33,61 +34,23 @@ export const HomeScreen = observer(function HomeScreen({
     filteredClinicians,
   } = cliniciansStore
 
-  function getOneTimeLocation() {
-    RNGeolocation.getCurrentPosition(
-      async position => {
-        const { coords } = position
-        if (coords) {
-          const { latitude, longitude } = coords
-          const formattedCoords = [`${latitude}, ${longitude}`]
-          const state = await fetchUserLocationState(formattedCoords)
-          state && setIsFiltering(true)
-        }
-      },
-      error => {
-        console.error(error.message)
-      },
-      {
-        enableHighAccuracy: false,
-        timeout: 30000,
-        maximumAge: 1000,
-      },
-    )
+  async function getLocation() {
+    const x = await requestLocationPermission(getUserLocationState)
+    console.log(x)
   }
 
-  async function requestLocationPermission() {
-    if (Platform.OS === 'ios') {
-      getOneTimeLocation()
-    } else {
-      try {
-        const granted = await PermissionsAndroid.request(
-          PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-          {
-            title: 'Location Access Required',
-            message:
-              'Eden health needs to access your location to filter Clinicians in your state.', // TODO: i18n these
-            buttonNeutral: 'Ask Me Later',
-            buttonNegative: 'Cancel',
-            buttonPositive: 'OK',
-          },
-        )
-        if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-          getOneTimeLocation()
-        } else {
-          console.log('Permission Denied')
-        }
-      } catch (err) {
-        console.warn(err)
-      }
-    }
+  async function getUserLocationState(
+    formattedCoords: Coordinates,
+  ): Promise<void> {
+    const state = await fetchUserLocationState(formattedCoords)
+    state && setIsFiltering(true)
   }
 
   function handleUserLocation() {
-    console.log('USER LOCATION STATE', userLocationState)
     if (userLocationState) {
       setIsFiltering(!filtering)
     } else {
-      requestLocationPermission()
+      getLocation()
     }
   }
 
@@ -137,7 +100,7 @@ export const HomeScreen = observer(function HomeScreen({
 const styles = StyleSheet.create({
   root: { flex: 1 },
   header: {
-    fontSize: 32,
+    fontSize: fonts.size.large,
     backgroundColor: 'red',
   },
 })

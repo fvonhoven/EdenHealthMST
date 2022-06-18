@@ -7,7 +7,9 @@ export const setupRootStore = async () => {
   const ROOT_STATE_STORAGE_KEY = 'root'
   let rootStore: RootStore
   let data: typeof RootStoreModel
-  const initialData = { cliniciansStore: { clinicians: DATA } }
+  const initialData = {
+    cliniciansStore: { clinicians: DATA, isLoggedIn: false },
+  }
   try {
     data = (await storage.load(ROOT_STATE_STORAGE_KEY)) || initialData
     rootStore = RootStoreModel.create(data)

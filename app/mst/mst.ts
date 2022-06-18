@@ -36,6 +36,7 @@ export const CliniciansListModel = types
     favorite: types.maybe(types.reference(ClinicianModel)),
     filtering: false,
     userLocationState: '',
+    isLoggedIn: false,
   })
   .actions(self => ({
     setFavorite: (value: Clinician) => {
@@ -51,6 +52,9 @@ export const CliniciansListModel = types
     },
     setUserLocationState: value => {
       self.userLocationState = value
+    },
+    setIsLoggedIn: (value: boolean) => {
+      self.isLoggedIn = value
     },
   }))
   .actions(self => ({

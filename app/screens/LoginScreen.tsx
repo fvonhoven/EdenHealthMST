@@ -3,10 +3,15 @@ import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
 import { FormBuilder } from 'react-native-paper-form-builder'
 import { Button } from 'react-native-paper'
 import { useForm } from 'react-hook-form'
+import { useStores } from '../mst'
+import { color, spacing } from '../theme'
 // import { TouchableOpacity } from '@rneui/base/dist/TouchableOpacity'
 // import { t } from '../i18n/i18n'
 
 export function LoginScreen() {
+  const {
+    cliniciansStore: { setIsLoggedIn },
+  } = useStores()
   const { control, setFocus, handleSubmit } = useForm({
     defaultValues: {
       email: '',
@@ -14,11 +19,7 @@ export function LoginScreen() {
     },
     mode: 'onSubmit',
   })
-  // function handleLogin() {
-  //   dispatch(setLoggedIn(true))
-  // }
-  // TODO: add validations
-  // TODO:
+
   return (
     <View style={styles.root}>
       <Image
@@ -75,7 +76,10 @@ export function LoginScreen() {
       <Button
         icon="login"
         mode="contained"
-        onPress={handleSubmit(data => console.log(data))}>
+        disabled
+        contentStyle={styles.button}
+        color={color.secondary}
+        onPress={handleSubmit(() => setIsLoggedIn(true))}>
         Login
       </Button>
     </View>
@@ -83,6 +87,7 @@ export function LoginScreen() {
 }
 
 const styles = StyleSheet.create({
-  root: { flex: 1, paddingHorizontal: 20, marginTop: '30%' },
-  logo: { height: 80, aspectRatio: 4, alignSelf: 'center' },
+  root: { flex: 1, paddingHorizontal: spacing(2), marginTop: '30%' },
+  logo: { height: spacing(10), aspectRatio: 4, alignSelf: 'center' },
+  button: { height: spacing(5) },
 })
