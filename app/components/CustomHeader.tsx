@@ -47,7 +47,7 @@ export function CustomHeader(props: HeaderProps) {
     />
   )
 }
-// TODO: metrics
+
 const styles = StyleSheet.create({
   headerContainer: {
     justifyContent: 'center',

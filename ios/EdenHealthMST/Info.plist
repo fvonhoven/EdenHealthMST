@@ -51,7 +51,9 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-  	<key>NSLocationWhenInUseUsageDescription</key>
+  <key>NSLocationWhenInUseUsageDescription</key>
+	<string>Eden Health needs your location in order to filter Clinicians in your state.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Eden Health needs your location in order to filter Clinicians in your state.</string>
   <key>UIAppFonts</key>
   <array>

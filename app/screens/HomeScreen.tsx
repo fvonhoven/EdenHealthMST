@@ -1,23 +1,32 @@
 import React from 'react'
-import {
-  View,
-  StyleSheet,
-  FlatList,
-  Platform,
-  PermissionsAndroid,
-} from 'react-native'
+import { View, StyleSheet, FlatList } from 'react-native'
 import type { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { NavigatorParamList } from '../navigation/AppNavigator'
 import { FavoriteClinicianRow } from '../components/FavoriteClinicianRow'
 import { ClinicianRow, CustomHeader } from '../components'
 import { EmptyData } from '../components/EmptyData'
-import { requestLocationPermission } from '../utils/geolocation/geolocation'
+import { getLocation } from '../utils/geolocation/geolocation'
 import { observer } from 'mobx-react-lite'
 import { useStores } from '../mst/mstContext'
 import { Clinician, Coordinates } from '../mst'
 import { fonts } from '../theme/fonts'
 
 type HomeScreenProps = NativeStackScreenProps<NavigatorParamList, 'Eden Health'>
+
+// TODO: add i18n
+// TODO: i18n all the things
+
+// TODO: add api folder?
+// TODO: metric magic values
+// TODO: Add splash screen
+
+// TODO: add snapshots
+// TODO: add env
+// TODO: add tests
+// TODO: add Android Studio and test working :-P
+
+// FRANK: TODO: geolocation not working right, not waiting for permission choice before making api call
+// FIXME: eems we need to use https://github.com/Agontuk/react-native-geolocation-service/blob/master/example/src/App.js
 
 export const HomeScreen = observer(function HomeScreen({
   navigation,
@@ -34,23 +43,19 @@ export const HomeScreen = observer(function HomeScreen({
     filteredClinicians,
   } = cliniciansStore
 
-  async function getLocation() {
-    const x = await requestLocationPermission(getUserLocationState)
-    console.log(x)
-  }
-
   async function getUserLocationState(
     formattedCoords: Coordinates,
   ): Promise<void> {
     const state = await fetchUserLocationState(formattedCoords)
+    console.log('STATE', state)
     state && setIsFiltering(true)
   }
 
-  function handleUserLocation() {
+  async function handleUserLocation() {
     if (userLocationState) {
       setIsFiltering(!filtering)
     } else {
-      getLocation()
+      await getLocation(getUserLocationState)
     }
   }
 

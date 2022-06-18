@@ -35,7 +35,7 @@ export const CliniciansListModel = types
     clinicians: types.optional(types.array(ClinicianModel), []),
     favorite: types.maybe(types.reference(ClinicianModel)),
     filtering: false,
-    userLocationState: '',
+    userLocationState: types.maybe(types.string),
     isLoggedIn: false,
   })
   .actions(self => ({
@@ -50,7 +50,7 @@ export const CliniciansListModel = types
     setIsFiltering: (value: boolean) => {
       self.filtering = value
     },
-    setUserLocationState: value => {
+    setUserLocationState: (value: string) => {
       self.userLocationState = value
     },
     setIsLoggedIn: (value: boolean) => {
@@ -67,8 +67,9 @@ export const CliniciansListModel = types
       try {
         // const { state } =
         //   response.data.results[0].response?.results[0]?.address_components
-        self.setUserLocationState('NY')
-        self.setIsFiltering(true)
+        const mockState = 'NY'
+        self.setUserLocationState(mockState)
+        return mockState
       } catch {
         return { kind: 'bad-data' }
       }
