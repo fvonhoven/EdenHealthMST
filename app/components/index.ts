@@ -1,4 +1,4 @@
-export * from './Address'
+export * from './AddressRow'
 export * from './ClinicianRow'
 export * from './CustomHeader'
 export * from './EmptyData'

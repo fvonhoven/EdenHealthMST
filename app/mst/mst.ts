@@ -1,7 +1,6 @@
 // import { ApiResponse, create } from 'apisauce'
 import { Instance, types, SnapshotOut } from 'mobx-state-tree'
-import { Address } from '../components/Address'
-import { sortedClinicians, filteredClinicians } from '../utils/appUtils'
+import { sortClinicians, filterClinicians } from '../utils/appUtils'
 
 export type Coordinates = string[]
 
@@ -77,11 +76,16 @@ export const CliniciansListModel = types
     },
   }))
   .views(self => ({
+    get cliniciansWithoutFavorite() {
+      return self.clinicians.slice().filter(c => c.id !== self.favorite?.id)
+    },
+  }))
+  .views(self => ({
     get filteredClinicians() {
-      return filteredClinicians(self.clinicians.slice())
+      return filterClinicians(self.cliniciansWithoutFavorite)
     },
     get sortedClinicians() {
-      return sortedClinicians(self.clinicians.slice())
+      return sortClinicians(self.cliniciansWithoutFavorite)
     },
   }))
 

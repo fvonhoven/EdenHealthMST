@@ -25,8 +25,7 @@ type HomeScreenProps = NativeStackScreenProps<NavigatorParamList, 'Eden Health'>
 // TODO: add tests
 // TODO: add Android Studio and test working :-P
 
-// FRANK: TODO: geolocation not working right, not waiting for permission choice before making api call
-// FIXME: eems we need to use https://github.com/Agontuk/react-native-geolocation-service/blob/master/example/src/App.js
+// FIXME: add react-native-fast-image
 
 export const HomeScreen = observer(function HomeScreen({
   navigation,
