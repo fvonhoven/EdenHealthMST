@@ -33,7 +33,7 @@ export function CustomHeader(props: HeaderProps) {
             name={`${rightIconName}`}
             type="ionicon"
             size={28}
-            color="#fff"
+            color="indigo"
             onPress={onRightPress}
           />
         ) : (
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     height: 60,
   },
   headerCenter: {
-    color: 'white',
+    color: 'indigo',
     fontSize: 22,
     fontWeight: 'bold',
   },

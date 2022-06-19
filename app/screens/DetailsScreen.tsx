@@ -4,7 +4,7 @@ import type { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { NavigatorParamList } from '../navigation/AppNavigator'
 import { Avatar, Card, Icon } from '@rneui/base'
 import { CardFeaturedSubtitle } from '@rneui/base/dist/Card/Card.FeaturedSubtitle'
-import { CustomHeader } from '../components/CustomHeader'
+import { CustomHeader, AddressRow } from '../components'
 import { useStores } from '../mst'
 import { observer } from 'mobx-react-lite'
 
@@ -16,7 +16,7 @@ export const DetailsScreen = observer(function DetailsScreen({
 }: DetailsScreenProps) {
   const [starSelected, setStarSelected] = React.useState(false)
   const { clinician } = route.params
-  const { fullName, bio, email, imageUrl, phone, location, id } = clinician
+  const { fullName, bio, email, imageUrl, phone, address, id } = clinician
   const {
     cliniciansStore: { favorite, setFavorite },
   } = useStores()
@@ -25,9 +25,11 @@ export const DetailsScreen = observer(function DetailsScreen({
     setFavorite(clinician)
     setStarSelected(!starSelected)
   }
-  function getIconName() {
+  function getIconProps() {
     const isFavorite = favorite && favorite.id === id
-    return isFavorite ? 'star' : 'star-outline'
+    const name = isFavorite ? 'favorite' : 'favorite-border'
+    const iconColor = isFavorite ? 'red' : 'black'
+    return { name, iconColor }
   }
   return (
     <ScrollView contentContainerStyle={styles.root}>
@@ -39,9 +41,8 @@ export const DetailsScreen = observer(function DetailsScreen({
         <View style={styles.cardHeader}>
           <Avatar source={{ uri: imageUrl }} rounded size="large" />
           <Icon
-            type="ionicons"
-            name={getIconName()}
-            color="black"
+            name={getIconProps().name}
+            color={getIconProps().iconColor}
             onPress={toggleFavorite}
           />
         </View>
@@ -49,7 +50,7 @@ export const DetailsScreen = observer(function DetailsScreen({
         <View style={styles.contact}>
           <Text>{email}</Text>
           <Text>{phone}</Text>
-          <Text>{location}</Text>
+          <AddressRow address={address} />
         </View>
         <Card.Divider />
         <CardFeaturedSubtitle style={{ color: 'black' }}>

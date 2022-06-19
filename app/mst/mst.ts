@@ -1,10 +1,11 @@
 // import { ApiResponse, create } from 'apisauce'
 import { Instance, types, SnapshotOut } from 'mobx-state-tree'
+import { Address } from '../components/Address'
 import { sortedClinicians, filteredClinicians } from '../utils/appUtils'
 
 export type Coordinates = string[]
 
-const AddressModel = types.model('Address', {
+export const AddressModel = types.model('Address', {
   number: types.optional(types.string, ''),
   street: types.optional(types.string, ''),
   suffix: types.optional(types.string, ''),
@@ -16,7 +17,7 @@ const AddressModel = types.model('Address', {
   country: types.optional(types.string, ''),
 })
 
-const ClinicianModel = types.model('Clinician', {
+export const ClinicianModel = types.model('Clinician', {
   id: types.optional(types.identifier, ''),
   firstName: types.optional(types.string, ''),
   lastName: types.optional(types.string, ''),
@@ -90,5 +91,8 @@ export const RootStoreModel = types.model('RootStore').props({
 
 export interface RootStore extends Instance<typeof RootStoreModel> {}
 export interface RootStoreSnapshot extends SnapshotOut<typeof RootStoreModel> {}
+
 export type Clinician = Instance<typeof ClinicianModel>
 export type CliniciansListModel = Instance<typeof CliniciansListModel>
+
+export type Address = Instance<typeof AddressModel>
