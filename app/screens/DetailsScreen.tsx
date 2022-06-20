@@ -35,6 +35,7 @@ export const DetailsScreen = observer(function DetailsScreen({
     <ScrollView contentContainerStyle={styles.root}>
       <CustomHeader
         title={clinician.fullName}
+        leftIconName="chevron-back"
         onLeftPress={() => navigation.pop()}
       />
       <Card containerStyle={styles.card}>

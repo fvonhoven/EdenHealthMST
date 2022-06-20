@@ -3,7 +3,7 @@ import { SafeAreaView, StatusBar, useColorScheme } from 'react-native'
 import { AppNavigator } from './navigation'
 import { RootStoreProvider, setupRootStore } from './mst'
 import { Provider as PaperProvider } from 'react-native-paper'
-import { theme } from './theme'
+import { color, theme } from './theme'
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark'
@@ -23,7 +23,7 @@ const App = () => {
   return (
     <PaperProvider theme={theme}>
       <RootStoreProvider value={rootStore}>
-        <SafeAreaView style={{ flex: 1 }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: "transparent" }}>
           <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
           <AppNavigator />
         </SafeAreaView>

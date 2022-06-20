@@ -13,8 +13,10 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		26E856C328CB38F7B9C43266 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E39D1D1CE7BB386734EDA9 /* ExpoModulesProvider.swift */; };
 		7699B88040F8A987B510C191 /* libPods-EdenHealthMST-EdenHealthMSTTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-EdenHealthMST-EdenHealthMSTTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		8E432A20856A8BEC2D428D75 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96295BB1D6D24C7BF95311D /* ExpoModulesProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,11 +43,13 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = EdenHealthMST/main.m; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-EdenHealthMST-EdenHealthMSTTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EdenHealthMST-EdenHealthMSTTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B4392A12AC88292D35C810B /* Pods-EdenHealthMST.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EdenHealthMST.debug.xcconfig"; path = "Target Support Files/Pods-EdenHealthMST/Pods-EdenHealthMST.debug.xcconfig"; sourceTree = "<group>"; };
+		56E39D1D1CE7BB386734EDA9 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-EdenHealthMST-EdenHealthMSTTests/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-EdenHealthMST.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EdenHealthMST.release.xcconfig"; path = "Target Support Files/Pods-EdenHealthMST/Pods-EdenHealthMST.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-EdenHealthMST-EdenHealthMSTTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EdenHealthMST-EdenHealthMSTTests.debug.xcconfig"; path = "Target Support Files/Pods-EdenHealthMST-EdenHealthMSTTests/Pods-EdenHealthMST-EdenHealthMSTTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-EdenHealthMST.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EdenHealthMST.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = EdenHealthMST/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-EdenHealthMST-EdenHealthMSTTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EdenHealthMST-EdenHealthMSTTests.release.xcconfig"; path = "Target Support Files/Pods-EdenHealthMST-EdenHealthMSTTests/Pods-EdenHealthMST-EdenHealthMSTTests.release.xcconfig"; sourceTree = "<group>"; };
+		A96295BB1D6D24C7BF95311D /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-EdenHealthMST/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -86,6 +90,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		0F23E508E0344E177FB800F2 /* EdenHealthMST */ = {
+			isa = PBXGroup;
+			children = (
+				A96295BB1D6D24C7BF95311D /* ExpoModulesProvider.swift */,
+			);
+			name = EdenHealthMST;
+			sourceTree = "<group>";
+		};
 		13B07FAE1A68108700A75B9A /* EdenHealthMST */ = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +121,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7AF9F706658CB26962C82400 /* ExpoModulesProviders */ = {
+			isa = PBXGroup;
+			children = (
+				0F23E508E0344E177FB800F2 /* EdenHealthMST */,
+				9C7895C62193E172F16744E3 /* EdenHealthMSTTests */,
+			);
+			name = ExpoModulesProviders;
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +148,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
 				01E4407A285E79BB00F09446 /* EdenHealthMST-Bridging-Header.h */,
+				7AF9F706658CB26962C82400 /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -140,6 +162,14 @@
 				00E356EE1AD99517003FC87E /* EdenHealthMSTTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		9C7895C62193E172F16744E3 /* EdenHealthMSTTests */ = {
+			isa = PBXGroup;
+			children = (
+				56E39D1D1CE7BB386734EDA9 /* ExpoModulesProvider.swift */,
+			);
+			name = EdenHealthMSTTests;
 			sourceTree = "<group>";
 		};
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
@@ -372,6 +402,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00E356F31AD99517003FC87E /* EdenHealthMSTTests.m in Sources */,
+				26E856C328CB38F7B9C43266 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +413,7 @@
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				01E4407C285E79BC00F09446 /* FileBecauseSwift.swift in Sources */,
+				8E432A20856A8BEC2D428D75 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,7 +439,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = EdenHealthMSTTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -418,6 +450,7 @@
 					"-lc++",
 					"$(inherited)",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EdenHealthMST.app/EdenHealthMST";
@@ -432,7 +465,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = EdenHealthMSTTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -443,6 +476,7 @@
 					"-lc++",
 					"$(inherited)",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EdenHealthMST.app/EdenHealthMST";
@@ -467,6 +501,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = EdenHealthMST;
 				SWIFT_OBJC_BRIDGING_HEADER = "EdenHealthMST-Bridging-Header.h";
@@ -493,6 +528,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = EdenHealthMST;
 				SWIFT_OBJC_BRIDGING_HEADER = "EdenHealthMST-Bridging-Header.h";
@@ -550,7 +586,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",
@@ -614,7 +650,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",

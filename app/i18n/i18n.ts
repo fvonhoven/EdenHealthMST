@@ -1,12 +1,9 @@
-import I18n from 'react-native-i18n'
-import en from './locales/en'
+import * as Localization from 'expo-localization'
+import i18n from 'i18n-js'
+import { zh, en, es } from './locales'
 
-I18n.fallbacks = true
+i18n.fallbacks = true
+i18n.translations = { en, zh, es }
+i18n.locale = Localization.locale
 
-I18n.translations = {
-  en,
-}
-// TODO: create typing from en.ts k:vs
-const t = (translate: string) => I18n.t(translate)
-
-export { t }
+export const { t } = i18n

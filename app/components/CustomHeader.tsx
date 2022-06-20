@@ -1,64 +1,70 @@
 import React from 'react'
-import { StyleSheet } from 'react-native'
-import { Header as HeaderRNE, Icon } from '@rneui/base'
-import { color } from '../theme'
+import { View, Text, StyleSheet } from "react-native"
+import {  Icon, Button } from '@rneui/base'
+import { spacing, fonts, color } from '../theme'
+
 
 interface HeaderProps {
   title?: string
   rightIconName?: string
+  leftIconName?: string
   onLeftPress?(): void
   onRightPress?(): void
 }
 
 export function CustomHeader(props: HeaderProps) {
-  const { onLeftPress, onRightPress, title, rightIconName } = props
+  const {
+    onLeftPress,
+    onRightPress,
+    rightIconName,
+    leftIconName,
+    title,
+  } = props
 
   return (
-    <HeaderRNE
-      backgroundColor={color.primary}
-      leftComponent={
-        title === 'Eden Health'
-          ? {}
-          : {
-              icon: 'chevron-left',
-              size: 28,
-              color: '#fff',
-              onPress: onLeftPress,
-            }
-      }
-      containerStyle={styles.headerContainer}
-      rightComponent={
-        title === 'Eden Health' ? (
+    <View style={[styles.root]}>
+      {onLeftPress ? (
+          <Icon
+            name={`${leftIconName}`}
+            type="ionicon"
+            size={spacing(4)}
+            onPress={onLeftPress}
+          />
+      ) : (
+        <View style={styles.left} />
+      )}
+      <View style={styles.titleMiddle}>
+        <Text style={[styles.title]} >{title}</Text>
+      </View>
+      {onRightPress ? (
+        <Button onPress={onRightPress}>
           <Icon
             name={`${rightIconName}`}
             type="ionicon"
-            size={28}
-            color="indigo"
+            size={spacing(4)}
             onPress={onRightPress}
+            containerStyle={{backgroundColor: "transparent"}}
           />
-        ) : (
-          {}
-        )
-      }
-      centerComponent={{
-        text: title,
-        style: styles.headerCenter,
-      }}
-    />
+        </Button>
+      ) : (
+        <View style={styles.right} />
+      )}
+    </View>
   )
 }
 
 const styles = StyleSheet.create({
-  headerContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    paddingVertical: 15,
-    height: 60,
+  root: {
+    flexDirection: "row",
+    paddingHorizontal: spacing(1),
+    alignItems: "center",
+    paddingTop: spacing(1),
+    paddingBottom: spacing(1),
+    justifyContent: "flex-start",
+    backgroundColor: color.primary
   },
-  headerCenter: {
-    color: 'indigo',
-    fontSize: 22,
-    fontWeight: 'bold',
-  },
+  title: { textAlign: "center", fontSize: fonts.size.medium },
+  titleMiddle: { flex: 1, justifyContent: "center" },
+  left: { width: spacing(4) },
+  right: { width: spacing(4) },
 })

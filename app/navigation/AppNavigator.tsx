@@ -24,7 +24,7 @@ const AppStack = () => {
   } = useStores()
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      {isLoggedIn ? (
+      {!isLoggedIn ? (
         <>
           <Stack.Screen name="Login" component={LoginScreen} />
         </>

@@ -59,14 +59,14 @@ export const HomeScreen = observer(function HomeScreen({
   }
 
   function goToDetails(clinician: Clinician) {
-    navigation.navigate('Details', { clinician })
+    navigation.push('Details', { clinician })
   }
   function renderItem({ item: clinician }: { item: Clinician }) {
     return (
       <ClinicianRow
         key={clinician.id}
         clinician={clinician}
-        onPress={() => navigation.navigate('Details', { clinician })}
+        onPress={goToDetails}
       />
     )
   }
@@ -87,7 +87,6 @@ export const HomeScreen = observer(function HomeScreen({
         title={route.name}
         rightIconName={filtering ? 'funnel' : 'funnel-outline'}
         onRightPress={handleUserLocation}
-        // rightIconName={isFiltering ? 'filter' : 'filter-outline'}
       />
       <FlatList
         data={filtering ? filteredClinicians : sortedClinicians}

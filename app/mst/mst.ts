@@ -54,6 +54,7 @@ export const CliniciansListModel = types
       self.userLocationState = value
     },
     setIsLoggedIn: (value: boolean) => {
+      console.log("LOGGING", value)
       self.isLoggedIn = value
     },
   }))

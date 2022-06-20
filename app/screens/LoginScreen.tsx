@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form'
 import { useStores } from '../mst'
 import { color, spacing } from '../theme'
 // import { TouchableOpacity } from '@rneui/base/dist/TouchableOpacity'
-// import { t } from '../i18n/i18n'
+import { t } from '../i18n/i18n'
 
 export function LoginScreen() {
   const {
@@ -47,7 +47,7 @@ export function LoginScreen() {
               },
             },
             textInputProps: {
-              label: 'email', // t('email'),
+              label: t('email'),
             },
           },
           {
@@ -68,7 +68,7 @@ export function LoginScreen() {
               },
             },
             textInputProps: {
-              label: 'password', // t('password'),
+              label: t('password'),
             },
           },
         ]}
@@ -76,7 +76,7 @@ export function LoginScreen() {
       <Button
         icon="login"
         mode="contained"
-        disabled
+        // disabled
         contentStyle={styles.button}
         color={color.secondary}
         onPress={handleSubmit(() => setIsLoggedIn(true))}>
