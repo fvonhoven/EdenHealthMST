@@ -37,13 +37,12 @@ export function CustomHeader(props: HeaderProps) {
         <Text style={[styles.title]} >{title}</Text>
       </View>
       {onRightPress ? (
-        <Button onPress={onRightPress}>
+        <Button containerStyle={{backgroundColor: 'red'}} onPress={onRightPress}>
           <Icon
             name={`${rightIconName}`}
             type="ionicon"
             size={spacing(4)}
             onPress={onRightPress}
-            containerStyle={{backgroundColor: "transparent"}}
           />
         </Button>
       ) : (
@@ -61,9 +60,9 @@ const styles = StyleSheet.create({
     paddingTop: spacing(1),
     paddingBottom: spacing(1),
     justifyContent: "flex-start",
-    backgroundColor: color.primary
+    backgroundColor: color.highlight
   },
-  title: { textAlign: "center", fontSize: fonts.size.medium },
+  title: { textAlign: "center", fontSize: fonts.size.medium, fontWeight: 'bold' },
   titleMiddle: { flex: 1, justifyContent: "center" },
   left: { width: spacing(4) },
   right: { width: spacing(4) },

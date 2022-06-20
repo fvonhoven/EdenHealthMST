@@ -13,17 +13,19 @@ import { fonts } from '../theme/fonts'
 
 type HomeScreenProps = NativeStackScreenProps<NavigatorParamList, 'Eden Health'>
 
-// TODO: add i18n
+// GOOD: add i18n
 // TODO: i18n all the things
 
 // TODO: add api folder?
 // TODO: metric magic values
 // TODO: Add splash screen
+// TODO: Add loading spinner
+// TODO: Add app icons
 
 // TODO: add snapshots
 // TODO: add env
 // TODO: add tests
-// TODO: add Android Studio and test working :-P
+// GOOD: add Android Studio and test working :-P
 
 // FIXME: add react-native-fast-image
 

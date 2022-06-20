@@ -7,6 +7,7 @@ import {
 } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { LoginScreen, HomeScreen, DetailsScreen } from '../screens'
+import { observer } from 'mobx-react-lite'
 import { useStores } from '../mst'
 
 export type NavigatorParamList = {
@@ -18,7 +19,7 @@ export type NavigatorParamList = {
 // Documentation: https://reactnavigation.org/docs/stack-navigator/
 const Stack = createNativeStackNavigator<NavigatorParamList>()
 
-const AppStack = () => {
+const AppStack = observer(function AppStack() {
   const {
     cliniciansStore: { isLoggedIn },
   } = useStores()
@@ -40,7 +41,7 @@ const AppStack = () => {
       )}
     </Stack.Navigator>
   )
-}
+})
 
 interface NavigationProps
   extends Partial<React.ComponentProps<typeof NavigationContainer>> {}
