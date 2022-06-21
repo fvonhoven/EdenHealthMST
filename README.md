@@ -65,8 +65,26 @@
 - [react-native-paper-form-builder](https://fateh999.github.io/react-native-paper-form-builder)
 - [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons) dependency of react-native-paper
 
-# Screenshots (gif and/or images of your application)
+# GIFs
 
-## iOS
+##### App Start
+![EH-load](https://user-images.githubusercontent.com/10098988/174912460-052e8f56-1148-4dbb-8666-8b9902806f0e.gif)
 
-## Android
+##### Login
+![EH-login](https://user-images.githubusercontent.com/10098988/174912474-6b65f589-6e64-458d-a026-b9b0d646538f.gif)
+
+##### Login Errors
+![EH-login-errors](https://user-images.githubusercontent.com/10098988/174912828-effb8631-0ea1-4c80-b9ea-f25cb478ab7f.gif)
+
+##### Favorite a Clinician
+![EH-favorite-1](https://user-images.githubusercontent.com/10098988/174912498-ef4ba8fe-8ce9-48a1-a73b-6700a4c61e78.gif)
+
+##### Favorite a Different Clinician and Replace Current Favorite
+![EH-favorite-2](https://user-images.githubusercontent.com/10098988/174912561-8306ee12-9366-4e40-9bc1-2870f6cfc7ea.gif)
+
+##### Unfavorite Clinician on Home Screen
+![EH-unfavorite-home](https://user-images.githubusercontent.com/10098988/174912583-0104f543-2880-4140-8275-5566926d24d1.gif)
+
+##### Unfavorite Clinician from Details Screen
+![EH-unfavorite](https://user-images.githubusercontent.com/10098988/174912659-791639aa-9e2b-4380-9937-64309f516463.gif)
+
