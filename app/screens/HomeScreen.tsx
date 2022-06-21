@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, StyleSheet, FlatList } from 'react-native'
+import { View, StyleSheet, FlatList, Alert } from 'react-native'
 import type { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { NavigatorParamList } from '../navigation/AppNavigator'
 import { FavoriteClinicianRow } from '../components/FavoriteClinicianRow'
@@ -10,20 +10,15 @@ import { observer } from 'mobx-react-lite'
 import { useStores } from '../mst/mstContext'
 import { Clinician, Coordinates } from '../mst'
 import { fonts } from '../theme/fonts'
+import { t } from '../i18n'
 
 type HomeScreenProps = NativeStackScreenProps<NavigatorParamList, 'Eden Health'>
-
-// GOOD: add i18n
-// TODO: i18n all the things
 
 // TODO: add api folder?
 // TODO: Add splash screen
 // TODO: Add loading spinner
-// TODO: Add app icons
 
 // TODO: add env
-// GOOD: add Android Studio and test working :-P
-
 // FIXME: add react-native-fast-image
 
 export const HomeScreen = observer(function HomeScreen({ navigation, route }: HomeScreenProps) {
@@ -36,6 +31,7 @@ export const HomeScreen = observer(function HomeScreen({ navigation, route }: Ho
     fetchUserLocationState,
     sortedClinicians,
     filteredClinicians,
+    setFavorite,
   } = cliniciansStore
   const noClinicians = filteredClinicians.length === 0 || sortedClinicians.length === 0
 
@@ -55,14 +51,31 @@ export const HomeScreen = observer(function HomeScreen({ navigation, route }: Ho
   function goToDetails(clinician: Clinician) {
     navigation.push('Details', { clinician })
   }
-  function renderItem({ item: clinician }: { item: Clinician }) {
-    return <ClinicianRow key={clinician.id} clinician={clinician} onPress={goToDetails} />
+
+  function handleFavoriteIconPress(unfavoritedClinician: Clinician) {
+    Alert.alert(`${'Unfavorite'} ${unfavoritedClinician.fullName}?`, t('unfavoriteMessage'), [
+      {
+        text: t('cancel'),
+        onPress: () => console.log('Cancel Pressed'),
+        style: 'cancel',
+      },
+      { text: t('confirm'), onPress: () => setFavorite(unfavoritedClinician) },
+    ])
   }
 
   function renderListHeader() {
-    return <FavoriteClinicianRow clinician={favorite} onPress={goToDetails} />
+    return (
+      <FavoriteClinicianRow
+        clinician={favorite}
+        onPress={goToDetails}
+        onIconPress={handleFavoriteIconPress}
+      />
+    )
   }
 
+  function renderItem({ item: clinician }: { item: Clinician }) {
+    return <ClinicianRow key={clinician.id} clinician={clinician} onPress={goToDetails} />
+  }
   function keyExtractor(item: any) {
     return item.id
   }

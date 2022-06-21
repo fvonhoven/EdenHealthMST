@@ -1,12 +1,14 @@
 export const en = {
   email: 'Email',
   password: 'Password',
-  confirm: 'Okay',
+  confirm: 'OK',
+  cancel: 'Cancel',
   emptyList: 'No clinicians available',
   login: 'Login',
   emptyEmail: 'Email is required',
   invalidEmail: 'Email is invalid',
   emptyPassword: 'Password is required',
+  favoriteClinician: 'Favorite Clinician',
   passwordShort: 'Password should be at least 8 characters',
   passwordLong: 'Password should be between 8 and 30 characters',
   locationDisabledErrorMsg:
@@ -17,4 +19,6 @@ export const en = {
   locationPermissionDenied: 'Location permission denied',
   locationDeniedAndroid: 'Location permission denied by user.',
   locationRevokedAndroid: 'Location permission revoked by user.',
+  Unfavorite: 'Unfavorite',
+  unfavoriteMessage: 'Are you sure you want to unfavorite this clinician?',
 }

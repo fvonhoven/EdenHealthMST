@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { SafeAreaView, StatusBar, useColorScheme } from 'react-native'
+import { SafeAreaView, StatusBar, useColorScheme, Platform, StyleSheet } from 'react-native'
 import { AppNavigator } from './navigation'
 import { RootStoreProvider, setupRootStore } from './mst'
 import { Provider as PaperProvider } from 'react-native-paper'
@@ -23,8 +23,11 @@ const App = () => {
   return (
     <PaperProvider theme={theme}>
       <RootStoreProvider value={rootStore}>
-        <SafeAreaView style={{ flex: 1, backgroundColor: "transparent" }}>
-          <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+        <SafeAreaView style={styles.safe}>
+          <StatusBar
+            barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+            backgroundColor={color.highlight}
+          />
           <AppNavigator />
         </SafeAreaView>
       </RootStoreProvider>
@@ -33,3 +36,9 @@ const App = () => {
 }
 
 export default App
+
+const styles = StyleSheet.create({
+  safe: {
+    flex: 1,
+  },
+})

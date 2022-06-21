@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     paddingHorizontal: spacing(2),
-    paddingVertical: spacing(2),
+    paddingVertical: spacing(3),
     backgroundColor: color.highlight,
   },
   title: {

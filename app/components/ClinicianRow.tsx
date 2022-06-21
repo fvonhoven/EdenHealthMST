@@ -6,6 +6,7 @@ import { ListItemContent } from '@rneui/base/dist/ListItem/ListItem.Content'
 import { Icon } from '@rneui/base/dist/Icon'
 import { ListItemTitle } from '@rneui/base/dist/ListItem/ListItem.Title'
 import { ListItemSubtitle } from '@rneui/base/dist/ListItem/ListItem.Subtitle'
+import { color } from '../theme'
 
 type ClinicianRowProps = {
   clinician: Clinician
@@ -14,12 +15,7 @@ type ClinicianRowProps = {
   favorite?: boolean
 }
 
-export function ClinicianRow({
-  clinician,
-  onPress,
-  styleOverride,
-  favorite,
-}: ClinicianRowProps) {
+export function ClinicianRow({ clinician, onPress, styleOverride, favorite }: ClinicianRowProps) {
   const {
     fullName,
     imageUrl,
@@ -36,7 +32,8 @@ export function ClinicianRow({
       key={id}
       bottomDivider
       onPress={handleRowPress}
-      containerStyle={styleOverride}>
+      containerStyle={[styles.container, styleOverride]}
+    >
       <Avatar
         source={{ uri: imageUrl }}
         rounded
@@ -58,4 +55,5 @@ export function ClinicianRow({
 
 const styles = StyleSheet.create({
   addressContainer: { flexDirection: 'row' },
+  container: { backgroundColor: color.background },
 })

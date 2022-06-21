@@ -9,8 +9,8 @@ type Fonts = {
 }
 export const fonts: Fonts = {
   size: {
-    small: 12,
-    regular: 16,
+    small: 16,
+    regular: 18,
     medium: 24,
     large: 36,
     xLarge: 48,

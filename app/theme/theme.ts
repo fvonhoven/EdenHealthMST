@@ -8,10 +8,12 @@ const theme = {
     ...DefaultTheme.colors,
     primary: 'rgb(145, 224, 163)',
     secondary: 'rgb(137, 96, 211)',
-    tertiary: 'rgb(244, 225, 217)',
-    highlight: '#3498db',
+    tertiary: 'rgb(255, 255, 255)',
+    background: 'rgb(255, 255, 240)',
     dark: '#333333',
+    favorite: '#87CEEB',
     fog: '#44444414',
+    highlight: '#B6D0E2',
   },
 }
 const color = theme.colors

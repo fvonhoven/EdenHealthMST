@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* EdenHealthMSTTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* EdenHealthMSTTests.m */; };
 		01E4407C285E79BC00F09446 /* FileBecauseSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E4407B285E79BC00F09446 /* FileBecauseSwift.swift */; };
+		01FA159A2861832100E707E1 /* New Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01FA15992861832100E707E1 /* New Launch Screen.storyboard */; };
 		0C80B921A6F3F58F76C31292 /* libPods-EdenHealthMST.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-EdenHealthMST.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		26E856C328CB38F7B9C43266 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E39D1D1CE7BB386734EDA9 /* ExpoModulesProvider.swift */; };
 		7699B88040F8A987B510C191 /* libPods-EdenHealthMST-EdenHealthMSTTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-EdenHealthMST-EdenHealthMSTTests.a */; };
-		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		8E432A20856A8BEC2D428D75 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96295BB1D6D24C7BF95311D /* ExpoModulesProvider.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +35,7 @@
 		00E356F21AD99517003FC87E /* EdenHealthMSTTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EdenHealthMSTTests.m; sourceTree = "<group>"; };
 		01E4407A285E79BB00F09446 /* EdenHealthMST-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EdenHealthMST-Bridging-Header.h"; sourceTree = "<group>"; };
 		01E4407B285E79BC00F09446 /* FileBecauseSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileBecauseSwift.swift; sourceTree = "<group>"; };
+		01FA15992861832100E707E1 /* New Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "New Launch Screen.storyboard"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* EdenHealthMST.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EdenHealthMST.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = EdenHealthMST/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = EdenHealthMST/AppDelegate.mm; sourceTree = "<group>"; };
@@ -47,7 +48,6 @@
 		5709B34CF0A7D63546082F79 /* Pods-EdenHealthMST.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EdenHealthMST.release.xcconfig"; path = "Target Support Files/Pods-EdenHealthMST/Pods-EdenHealthMST.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-EdenHealthMST-EdenHealthMSTTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EdenHealthMST-EdenHealthMSTTests.debug.xcconfig"; path = "Target Support Files/Pods-EdenHealthMST-EdenHealthMSTTests/Pods-EdenHealthMST-EdenHealthMSTTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-EdenHealthMST.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EdenHealthMST.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = EdenHealthMST/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-EdenHealthMST-EdenHealthMSTTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EdenHealthMST-EdenHealthMSTTests.release.xcconfig"; path = "Target Support Files/Pods-EdenHealthMST-EdenHealthMSTTests/Pods-EdenHealthMST-EdenHealthMSTTests.release.xcconfig"; sourceTree = "<group>"; };
 		A96295BB1D6D24C7BF95311D /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-EdenHealthMST/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -105,7 +105,7 @@
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
-				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
+				01FA15992861832100E707E1 /* New Launch Screen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
 			name = EdenHealthMST;
@@ -275,7 +275,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				01FA159A2861832100E707E1 /* New Launch Screen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
