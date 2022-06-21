@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet, TextStyle } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 import { Icon } from '@rneui/base'
 import { spacing, fonts, color } from '../theme'
 
@@ -12,7 +12,13 @@ interface HeaderProps {
 }
 
 export function CustomHeader(props: HeaderProps) {
-  const { onLeftPress, onRightPress, rightIconName, leftIconName, title } = props
+  const {
+    onLeftPress,
+    onRightPress,
+    rightIconName,
+    leftIconName,
+    title,
+  } = props
 
   return (
     <View style={[styles.root]}>
