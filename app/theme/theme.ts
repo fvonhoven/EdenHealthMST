@@ -10,6 +10,7 @@ const theme = {
     secondary: 'rgb(137, 96, 211)',
     tertiary: 'rgb(244, 225, 217)',
     highlight: '#3498db',
+    dark: '#333333',
   },
 }
 const color = theme.colors

@@ -7,6 +7,7 @@ import { CardFeaturedSubtitle } from '@rneui/base/dist/Card/Card.FeaturedSubtitl
 import { CustomHeader, AddressRow } from '../components'
 import { useStores } from '../mst'
 import { observer } from 'mobx-react-lite'
+import { spacing } from '../theme'
 
 type DetailsScreenProps = NativeStackScreenProps<NavigatorParamList, 'Details'>
 
@@ -65,11 +66,11 @@ export const DetailsScreen = observer(function DetailsScreen({
 const styles = StyleSheet.create({
   root: { flexGrow: 1 },
   contact: {
-    paddingBottom: 20,
+    paddingBottom: spacing(3),
     justifyContent: 'space-between',
-    height: 84,
+    height: spacing(10),
   },
-  card: { borderRadius: 8 },
+  card: { borderRadius: spacing(1) },
   cardHeader: {
     flex: 1,
     flexDirection: 'row',

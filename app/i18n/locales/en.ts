@@ -1,5 +1,6 @@
-export const en = {
-  greeting: 'Hi!',
+export const es = {
   email: 'Email',
   password: 'Password',
+  confirm: 'Okay',
+  emptyList: 'No clinicians available',
 }

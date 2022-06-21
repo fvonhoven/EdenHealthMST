@@ -1,8 +1,7 @@
 import React from 'react'
-import { View, Text, StyleSheet } from "react-native"
-import {  Icon, Button } from '@rneui/base'
+import { View, Text, StyleSheet, TextStyle } from 'react-native'
+import { Icon } from '@rneui/base'
 import { spacing, fonts, color } from '../theme'
-
 
 interface HeaderProps {
   title?: string
@@ -13,38 +12,32 @@ interface HeaderProps {
 }
 
 export function CustomHeader(props: HeaderProps) {
-  const {
-    onLeftPress,
-    onRightPress,
-    rightIconName,
-    leftIconName,
-    title,
-  } = props
+  const { onLeftPress, onRightPress, rightIconName, leftIconName, title } = props
 
   return (
     <View style={[styles.root]}>
       {onLeftPress ? (
-          <Icon
-            name={`${leftIconName}`}
-            type="ionicon"
-            size={spacing(4)}
-            onPress={onLeftPress}
-          />
+        <Icon
+          name={`${leftIconName}`}
+          type="ionicon"
+          size={spacing(4)}
+          onPress={onLeftPress}
+          iconStyle={styles.leftIcon}
+        />
       ) : (
         <View style={styles.left} />
       )}
       <View style={styles.titleMiddle}>
-        <Text style={[styles.title]} >{title}</Text>
+        <Text style={[styles.title]}>{title}</Text>
       </View>
       {onRightPress ? (
-        <Button containerStyle={{backgroundColor: 'red'}} onPress={onRightPress}>
-          <Icon
-            name={`${rightIconName}`}
-            type="ionicon"
-            size={spacing(4)}
-            onPress={onRightPress}
-          />
-        </Button>
+        <Icon
+          name={`${rightIconName}`}
+          type="ionicon"
+          size={spacing(4)}
+          onPress={onRightPress}
+          iconStyle={styles.rightIcon}
+        />
       ) : (
         <View style={styles.right} />
       )}
@@ -54,16 +47,26 @@ export function CustomHeader(props: HeaderProps) {
 
 const styles = StyleSheet.create({
   root: {
-    flexDirection: "row",
-    paddingHorizontal: spacing(1),
-    alignItems: "center",
-    paddingTop: spacing(1),
-    paddingBottom: spacing(1),
-    justifyContent: "flex-start",
-    backgroundColor: color.highlight
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    paddingHorizontal: spacing(2),
+    paddingVertical: spacing(2),
+    backgroundColor: color.highlight,
   },
-  title: { textAlign: "center", fontSize: fonts.size.medium, fontWeight: 'bold' },
-  titleMiddle: { flex: 1, justifyContent: "center" },
+  title: {
+    textAlign: 'center',
+    fontSize: fonts.size.medium,
+    fontWeight: 'bold',
+    color: color.dark,
+  },
+  titleMiddle: { flex: 1, justifyContent: 'center' },
   left: { width: spacing(4) },
   right: { width: spacing(4) },
+  leftIcon: {
+    color: color.dark,
+  },
+  rightIcon: {
+    color: color.dark,
+  },
 })

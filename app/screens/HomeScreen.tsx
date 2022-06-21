@@ -22,17 +22,12 @@ type HomeScreenProps = NativeStackScreenProps<NavigatorParamList, 'Eden Health'>
 // TODO: Add loading spinner
 // TODO: Add app icons
 
-// TODO: add snapshots
 // TODO: add env
-// TODO: add tests
 // GOOD: add Android Studio and test working :-P
 
 // FIXME: add react-native-fast-image
 
-export const HomeScreen = observer(function HomeScreen({
-  navigation,
-  route,
-}: HomeScreenProps) {
+export const HomeScreen = observer(function HomeScreen({ navigation, route }: HomeScreenProps) {
   const { cliniciansStore } = useStores()
   const {
     userLocationState,
@@ -43,12 +38,10 @@ export const HomeScreen = observer(function HomeScreen({
     sortedClinicians,
     filteredClinicians,
   } = cliniciansStore
+  const noClinicians = filteredClinicians.length === 0 || sortedClinicians.length === 0
 
-  async function getUserLocationState(
-    formattedCoords: Coordinates,
-  ): Promise<void> {
+  async function getUserLocationState(formattedCoords: Coordinates): Promise<void> {
     const state = await fetchUserLocationState(formattedCoords)
-    console.log('STATE', state)
     state && setIsFiltering(true)
   }
 
@@ -64,13 +57,7 @@ export const HomeScreen = observer(function HomeScreen({
     navigation.push('Details', { clinician })
   }
   function renderItem({ item: clinician }: { item: Clinician }) {
-    return (
-      <ClinicianRow
-        key={clinician.id}
-        clinician={clinician}
-        onPress={goToDetails}
-      />
-    )
+    return <ClinicianRow key={clinician.id} clinician={clinician} onPress={goToDetails} />
   }
 
   function renderListHeader() {
@@ -80,7 +67,8 @@ export const HomeScreen = observer(function HomeScreen({
   function keyExtractor(item: any) {
     return item.id
   }
-  if (filteredClinicians.length === 0 || sortedClinicians.length === 0) {
+
+  if (noClinicians) {
     return <EmptyData />
   }
   return (
