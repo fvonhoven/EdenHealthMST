@@ -11,6 +11,7 @@ const theme = {
     tertiary: 'rgb(244, 225, 217)',
     highlight: '#3498db',
     dark: '#333333',
+    fog: '#44444414',
   },
 }
 const color = theme.colors

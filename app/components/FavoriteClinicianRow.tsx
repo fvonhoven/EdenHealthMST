@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 import { Clinician } from '../mst'
-import { fonts, spacing } from '../theme'
+import { color, fonts, spacing } from '../theme'
 import { ClinicianRow } from './ClinicianRow'
 
 type FavoriteClinicianProps = {
@@ -16,6 +16,7 @@ export function FavoriteClinicianRow({ clinician, onPress }: FavoriteClinicianPr
   return (
     <View style={styles.row}>
       <Text style={styles.text}>Favorite Clinician</Text>
+      <View style={{ height: 1, backgroundColor: color.fog }} />
       <ClinicianRow styleOverride={styles.row} clinician={clinician} onPress={onPress} favorite />
     </View>
   )
@@ -24,9 +25,9 @@ export function FavoriteClinicianRow({ clinician, onPress }: FavoriteClinicianPr
 const styles = StyleSheet.create({
   row: { backgroundColor: 'paleturquoise' },
   text: {
-    paddingTop: spacing(2),
+    paddingVertical: spacing(1),
     paddingLeft: spacing(2),
     fontWeight: 'bold',
-    fontSize: fonts.size.regular,
+    fontSize: fonts.size.small,
   },
 })

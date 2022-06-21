@@ -12,7 +12,7 @@ export function LoginScreen() {
   const {
     cliniciansStore: { setIsLoggedIn },
   } = useStores()
-  const { control, setFocus, handleSubmit, getValues } = useForm({
+  const { control, setFocus, handleSubmit } = useForm({
     defaultValues: {
       email: '',
       password: '',
@@ -21,7 +21,10 @@ export function LoginScreen() {
   })
 
   return (
-    <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={styles.root}
+    >
       <Image
         resizeMode="contain"
         style={styles.logo}
