@@ -17,7 +17,6 @@ type HomeScreenProps = NativeStackScreenProps<NavigatorParamList, 'Eden Health'>
 // TODO: i18n all the things
 
 // TODO: add api folder?
-// TODO: metric magic values
 // TODO: Add splash screen
 // TODO: Add loading spinner
 // TODO: Add app icons

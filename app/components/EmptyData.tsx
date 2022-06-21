@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-import { t } from '../i18n/i18n'
+import { t } from '../i18n'
 
 export const EmptyData = () => {
   return (

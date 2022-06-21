@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form'
 import { useStores } from '../mst'
 import { color, spacing } from '../theme'
 import { emailRules, passwordRules } from '../utils/validation'
-import { t } from '../i18n/i18n'
+import { t } from '../i18n'
 
 export function LoginScreen() {
   const {

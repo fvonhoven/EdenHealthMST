@@ -4,4 +4,17 @@ export const en = {
   confirm: 'Okay',
   emptyList: 'No clinicians available',
   login: 'Login',
+  emptyEmail: 'Email is required',
+  invalidEmail: 'Email is invalid',
+  emptyPassword: 'Password is required',
+  passwordShort: 'Password should be at least 8 characters',
+  passwordLong: 'Password should be between 8 and 30 characters',
+  locationDisabledErrorMsg:
+    'Turn on Location Services to allow Eden Health to determine your location.',
+  goToSettings: 'Go to Settings',
+  unableToOpenSettings: 'Unable to open Settings',
+  dontUseLocation: "Don't use location",
+  locationPermissionDenied: 'Location permission denied',
+  locationDeniedAndroid: 'Location permission denied by user.',
+  locationRevokedAndroid: 'Location permission revoked by user.',
 }

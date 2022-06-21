@@ -1,25 +1,27 @@
+import { t } from '../../i18n'
+
 export const emailRules = {
   required: {
     value: true,
-    message: 'Email is required',
+    message: t('emptyEmail'),
   },
   pattern: {
     value: /[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})/,
-    message: 'Email is invalid',
+    message: t('invalidEmail'),
   },
 }
 
 export const passwordRules = {
   required: {
     value: true,
-    message: 'Password is required',
+    message: t('emptyPassword'),
   },
   minLength: {
     value: 8,
-    message: 'Password should be at least 8 characters',
+    message: t('passwordShort'),
   },
   maxLength: {
     value: 30,
-    message: 'Password should be between 8 and 30 characters',
+    message: t('passwordLong'),
   },
 }

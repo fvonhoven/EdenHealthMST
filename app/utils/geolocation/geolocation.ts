@@ -1,18 +1,12 @@
-import {
-  Platform,
-  PermissionsAndroid,
-  Linking,
-  Alert,
-  ToastAndroid,
-} from 'react-native'
+import { Platform, PermissionsAndroid, Linking, Alert, ToastAndroid } from 'react-native'
 import Geolocation from 'react-native-geolocation-service'
 import { Coordinates } from '../../mst'
-import appConfig from '../../../app.json'
+import { t } from '../../i18n'
 
 const hasPermissionIOS = async () => {
   const openSetting = () => {
     Linking.openSettings().catch(() => {
-      Alert.alert('Unable to open settings')
+      Alert.alert(t('unableToOpenSettings'))
     })
   }
   const status = await Geolocation.requestAuthorization('whenInUse')
@@ -22,18 +16,14 @@ const hasPermissionIOS = async () => {
   }
 
   if (status === 'denied') {
-    Alert.alert('Location permission denied')
+    Alert.alert(t('locationPermissionDenied'))
   }
 
   if (status === 'disabled') {
-    Alert.alert(
-      `Turn on Location Services to allow "${appConfig.displayName}" to determine your location.`,
-      '',
-      [
-        { text: 'Go to Settings', onPress: openSetting },
-        { text: "Don't Use Location", onPress: () => {} },
-      ],
-    )
+    Alert.alert(t('locationDisabledErrorMsg'), '', [
+      { text: t('goToSettings'), onPress: openSetting },
+      { text: t('dontUseLocation'), onPress: () => {} },
+    ])
   }
 
   return false
@@ -66,17 +56,15 @@ const hasLocationPermission = async () => {
   }
 
   if (status === PermissionsAndroid.RESULTS.DENIED) {
-    ToastAndroid.show('Location permission denied by user.', ToastAndroid.LONG)
+    ToastAndroid.show(t('locationDeniedAndroid'), ToastAndroid.LONG)
   } else if (status === PermissionsAndroid.RESULTS.NEVER_ASK_AGAIN) {
-    ToastAndroid.show('Location permission revoked by user.', ToastAndroid.LONG)
+    ToastAndroid.show(t('locationRevokedAndroid'), ToastAndroid.LONG)
   }
 
   return false
 }
 
-export const getLocation = async (
-  callback: (coordinates: Coordinates) => Promise<void>,
-) => {
+export const getLocation = async (callback: (coordinates: Coordinates) => Promise<void>) => {
   const hasPermission = await hasLocationPermission()
 
   if (!hasPermission) {
