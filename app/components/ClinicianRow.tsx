@@ -55,5 +55,5 @@ export function ClinicianRow({ clinician, onPress, styleOverride, favorite }: Cl
 
 const styles = StyleSheet.create({
   addressContainer: { flexDirection: 'row' },
-  container: { backgroundColor: color.background },
+  container: { backgroundColor: color.rowBackground },
 })

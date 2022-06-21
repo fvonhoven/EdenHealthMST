@@ -18,6 +18,7 @@ export function FavoriteClinicianRow({ clinician, onPress, onIconPress }: Favori
 
   return (
     <View style={styles.container}>
+      <View style={styles.divider} />
       <Icon
         name="favorite"
         color={color.dark}
@@ -37,8 +38,8 @@ export function FavoriteClinicianRow({ clinician, onPress, onIconPress }: Favori
 const styles = StyleSheet.create({
   container: { backgroundColor: color.favorite },
   divider: {
-    height: 1,
-    backgroundColor: color.fog,
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: color.dark,
   },
   icon: {
     position: 'absolute',
