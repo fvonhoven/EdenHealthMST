@@ -119,3 +119,6 @@
 ##### Unfavorite Clinician from Details Screen
 
 ![EH-unfavorite](https://user-images.githubusercontent.com/10098988/174912659-791639aa-9e2b-4380-9937-64309f516463.gif)
+
+##### Get user location and filter clinicians by user's state (here mocked to be NY)
+![EH-filter](https://user-images.githubusercontent.com/10098988/175093643-17de5e91-58b5-462b-a996-63f8ed2ef285.gif)
