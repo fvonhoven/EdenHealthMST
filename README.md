@@ -2,29 +2,32 @@
 
 ### _Prerequisites_
 
-- If you have never run a React native application on your computer before, you will have to [setup your environment.](https://reactnative.dev/docs/environment-setup)
+- You should have Xcode or Android Studio installed on your computer
 
-* Clone this repository into a local directory on your computer
+* If you have never run a React native application on your computer before, you will have to [setup your environment.](https://reactnative.dev/docs/environment-setup)
+
+- Clone this repository into a local directory on your computer
   ```
   git clone git@github.com:fvonhoven/EdenHealthMST.git
   ```
-* Install local packages with yarn or npm
-
-  - `yarn`
-    or
-  - `npm i`
-
-* ##### (iOS only) Additional Installation step for Cocoapods!
-
-  - `npx pod-install ios`
 
 ## iOS
 
-- Run application with `npx react-native run-ios`
+- Install local packages with yarn or npm
+
+  - `yarn` or `npm i`
+
+* `npx pod-install ios`
+
+- Run the app with `npx react-native run-ios`
 
 ## Android
 
-- Run application with `npx react-native run-android`
+- Install local packages with yarn or npm
+
+* `yarn` or `npm i`
+
+- Run the app with `npx react-native run-android`
 
 # Implementation
 
@@ -53,7 +56,7 @@
 
   ([Formerly called unimodules](https://blog.expo.dev/whats-new-in-expo-modules-infrastructure-7a7cdda81ebc)), Expo now exports its modules as a stand alone service called [Expo Modules](https://docs.expo.dev/bare/installing-expo-modules/) which allows use of its SDK in React Native bare workflows. This was a dependency for `i18n-js` and also allows for us to utilize their SDK in the future (e.g. SplashScreen was added to this project to control showing the splashscreen until our clinicians are fully loaded and then hiding it when we are ready for presentation to the user)
 
-- #### _Comments_
+- ##### _Developer Comments_
 
   - This exercise is relatively simple on its face, a favoritable list with login, but a mobile app is more than just a set of features. App architecture and scalability were two of the larger considerations when creating this project - that and choosing a state management option, since redux has changed a bit since the reducer, action, saga paradigm I was used to when we first used it in our clients' React Native apps at Infinite Red. I did like that redux-toolkit addressed many of the shared frustrations with redux over the years, but decided to go with MST because it was more streamlined for the required functionality/features. I did attempt an approach with Ignite, but it was a bit overkill for this exercise and I found myself removing much of what it included. If this was an actual production app, I might consider using it, but in the time allotment it was like putting an oil tanker in a riverbed. I did probably spend more time on UI than I should have, but I didn't have the luxury of being able to iterate on design throughout a typical development process. That said, there is room for improvement 😜. Overall this was a fun exercise that I enjoyed with the freedom to start a project from scratch and add a bit of creativity to with the latest tools available today in the React Native ecosystem.
     <br>
@@ -85,7 +88,7 @@
 - [react-native-elements](https://reactnativeelements.com/)
 - [react-native-paper](https://callstack.github.io/react-native-paper/)
 - [react-native-paper-form-builder](https://fateh999.github.io/react-native-paper-form-builder)
-- [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons) dependency of react-native-paper
+- [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons)
 
 # GIFs
 
