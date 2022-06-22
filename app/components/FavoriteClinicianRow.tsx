@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View, Text } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import { Clinician } from '../mst'
 import { color, spacing } from '../theme'
 import { ClinicianRow } from './ClinicianRow'
@@ -11,7 +11,11 @@ type FavoriteClinicianProps = {
   onIconPress: (clinician: Clinician) => void
 }
 
-export function FavoriteClinicianRow({ clinician, onPress, onIconPress }: FavoriteClinicianProps) {
+export function FavoriteClinicianRow({
+  clinician,
+  onPress,
+  onIconPress,
+}: FavoriteClinicianProps) {
   if (!clinician) {
     return null
   }
